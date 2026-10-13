@@ -1,0 +1,13 @@
+{
+  "name": "bitebox",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "dev": "concurrently -n api,web -c yellow,cyan \"npm:dev --workspace=server\" \"npm:dev --workspace=client\"",
+    "build": "npm run build --workspace=client",
+    "start": "npm run start --workspace=server",
+    "seed": "npm run seed --workspace=server"
+  },
+  "devDependencies": { "concurrently": "^9.1.2" }
+}
