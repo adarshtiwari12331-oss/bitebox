@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-const API = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+const API = import.meta.env.VITE_API_URL || 'https://bitebox-0l45.onrender.com/api';
 export async function request(path, options = {}) { const token = localStorage.getItem('bb-token'); const res = await fetch(`${API}${path}`, { ...options, headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}), ...options.headers } }); const data = res.status === 204 ? {} : await res.json().catch(() => ({})); if (!res.ok) throw new Error(data.message || 'Something went wrong. Please try again.'); return data; }
 const AppContext = createContext(null);
 export function AppProvider({ children }) {
